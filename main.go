@@ -3,6 +3,7 @@ package main
 import (
 	"golang-web-service-api/controllers/authcontroller"
 	"golang-web-service-api/controllers/kontrakvacontroller"
+	"golang-web-service-api/middlewares"
 	"golang-web-service-api/models"
 	"log"
 	"net/http"
@@ -20,7 +21,9 @@ func main() {
 	r.HandleFunc("/register", authcontroller.Register).Methods("POST")
 	r.HandleFunc("/logout", authcontroller.Logout).Methods("GET")
 
-	r.HandleFunc("/api/kontrakva", kontrakvacontroller.Index).Methods("GET")
+	api := r.PathPrefix("/api").Subrouter() //sub route
+	api.HandleFunc("/kontrakva", kontrakvacontroller.Index).Methods("GET")
+	api.Use(middlewares.JWTMiddleware)
 
 	log.Fatal(http.ListenAndServe(":8181", r))
 
