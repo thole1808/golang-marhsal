@@ -13,12 +13,11 @@ func main() {
 
 	// koneksi models ke database
 	models.ConnectDatabase()
-
 	// setting routes dengan gorilla mux
 	r := mux.NewRouter()
 	r.HandleFunc("/login", authcontroller.Login).Methods("POST")
 	r.HandleFunc("/register", authcontroller.Register).Methods("POST")
-	r.HandleFunc("/register", authcontroller.Logout).Methods("GET")
+	r.HandleFunc("/logout", authcontroller.Logout).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8181", r))
 

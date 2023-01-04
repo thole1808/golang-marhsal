@@ -6,4 +6,7 @@ tutorial golang rest API JWT AUTH + frameworks Mux Middleware
 4. install go get -u github.com/gorilla/mux. => untuk kebutuhan route 
 5. install go get -u gorm.io/gorm => untuk kebutuhan struktur database / table.
 6. install go get golang.org/x/crypto/bcrypt => untuk kebutuhan hashing password dengan bycrypt
-7. install 
+7. install go get go get github.com/go-playground/validator/v10 => untuk keperluan validasi struct yang di models.
+8. install go get github.com/golang-jwt/jwt/v4 => untuk keperluan jwt token v4.
+9. 
+ 
