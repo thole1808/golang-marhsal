@@ -36,14 +36,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	// 	},
 	// }
 
-	data := map[string]any{
-		"metadata": map[string]string{
-			"code":    "200",
-			"message": "sukses",
-		},
-		"total birds": 2,
-	}
-	helper.ResponseJSON(w, http.StatusOK, data)
+	// data := map[string]any{
+	// 	"metadata": map[string]string{
+	// 		"code":    "200",
+	// 		"message": "sukses",
+	// 	},
+	// 	"total birds": 2,
+	// }
+	// helper.ResponseJSON(w, http.StatusOK, data)
 
 	// birdData := map[string]any{
 	// 	"birdSounds": map[string]string{
@@ -57,4 +57,20 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	// datas, _ := json.Marshal(birdData)
 	// helper.ResponseJSON(w, http.StatusOK, datas)
 	// fmt.Println(string(data))
+
+	data := []map[string]interface{}{
+		{
+			"id":         10,
+			"no_invoice": "KS-2323232",
+		},
+		{
+			"id":         1,
+			"no_invoice": "KS-2323232",
+		},
+		{
+			"id":         4,
+			"no_invoice": "KS-2323232",
+		},
+	}
+	helper.ResponseJSON(w, http.StatusOK, data)
 }
