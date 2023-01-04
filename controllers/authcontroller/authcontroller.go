@@ -2,7 +2,7 @@ package authcontroller
 
 import (
 	"encoding/json"
-	"fmt"
+	"golang-web-service-api/helper"
 	"golang-web-service-api/models"
 	"net/http"
 
@@ -22,7 +22,9 @@ func Register(w http.ResponseWriter, r *http.Request) {
 
 	if err := decoder.Decode(&userInput); err != nil {
 		// log.Fatal("Gagal Mendecode JSON")
-		fmt.Println("Gagal Mendecode JSON")
+		// fmt.Println("Gagal Mendecode JSON")
+		response := map[string]string{"message": err.Error()}
+		helper.ResponseJSON(w, http.StatusBadRequest, response)
 	}
 
 	// close
@@ -36,13 +38,13 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	// insert ke database
 	if err := models.DB.Create(&userInput).Error; err != nil {
 		// log.Fatal("Gagal Menyimpan data")
-		fmt.Println("Gagal Menyimpan data")
+		// fmt.Println("Gagal Menyimpan data")
+		response := map[string]string{"message": err.Error()}
+		helper.ResponseJSON(w, http.StatusInternalServerError, response)
 	}
 
-	response, _ := json.Marshal(map[string]string{"message": "success"})
-	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(response)
+	response := map[string]string{"message": "success"}
+	helper.ResponseJSON(w, http.StatusOK, response)
 
 }
 
