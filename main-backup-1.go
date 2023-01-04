@@ -69,7 +69,7 @@ func getByTitle(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "400 status bad request", http.StatusBadRequest)
 }
 
-func main() {
+func main1() {
 	// Ini dengan Framework Gin
 	// router := gin.Default()
 	// router.GET("/albums", getAlbums)
