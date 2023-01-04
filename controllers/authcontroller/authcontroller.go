@@ -84,9 +84,19 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	})
 
 	// SUCCESS
-	response := map[string]string{"message": "Login Berhasil", "data": token}
+	response := map[string]string{"message": "Login Berhasil"}
 	helper.ResponseJSON(w, http.StatusOK, response)
 	return
+
+	// birdData := map[string]any{
+	// 	"birdSounds": map[string]string{
+	// 		"pigeon": "coo",
+	// 		"eagle":  "squak",
+	// 	},
+	// 	"total birds": 2,
+	// }
+	// helper.ResponseJSON(w, http.StatusOK, birdData)
+	// return
 
 	// costumize response JSON
 	// response := map[string]interface{}{
@@ -129,6 +139,16 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	// 	},
 	// }
 	// helper.ResponseJSON(w, http.StatusOK, response)
+	// return
+
+	// birdData := map[string]any{
+	// 	"metadata": map[string]string{
+	// 		"response_code": "200",
+	// 		"message":       "sukses",
+	// 	},
+	// 	"data": "232323",
+	// }
+	// helper.ResponseJSON(w, http.StatusOK, birdData)
 	// return
 
 }
