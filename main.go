@@ -15,13 +15,15 @@ func main() {
 
 	// koneksi models ke database
 	models.ConnectDatabase()
+
 	// setting routes dengan gorilla mux
 	r := mux.NewRouter()
 	r.HandleFunc("/login", authcontroller.Login).Methods("POST")
 	r.HandleFunc("/register", authcontroller.Register).Methods("POST")
 	r.HandleFunc("/logout", authcontroller.Logout).Methods("GET")
 
-	api := r.PathPrefix("/api").Subrouter() //sub route
+	//sub route & middlewares
+	api := r.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/kontrakva", kontrakvacontroller.Index).Methods("GET")
 	api.Use(middlewares.JWTMiddleware)
 
